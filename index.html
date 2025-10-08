@@ -130,7 +130,14 @@
                 if (markers.length > 0) {
                     const bounds = new window.google.maps.LatLngBounds();
                     markers.forEach(marker => bounds.extend(marker.getPosition()));
-                    map.fitBounds(bounds);
+                    map.fitBounds(bounds, { top: 100, right: 100, bottom: 100, left: 100 });
+                    
+                    // Prevent zooming in too close if stores are clustered
+                    const listener = window.google.maps.event.addListenerOnce(map, 'bounds_changed', () => {
+                        if (map.getZoom() > 10) {
+                            map.setZoom(10);
+                        }
+                    });
                 }
             };
 
