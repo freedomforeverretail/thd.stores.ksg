@@ -178,7 +178,7 @@
                 for (let i = 1; i < values.length; i++) {
                     const row = values[i];
                     
-                    if (row.length >= 19) {
+                    if (row.length >= 20) {
                         const status = row[0]?.toString().trim();
                         const owner = row[1]?.toString().trim();
                         
@@ -192,20 +192,20 @@
                             else if (statusLower === 'staffed') counts.staffed++;
                             
                             // Parse coordinates
-                            const lat = parseFloat(row[16]);
-                            const lng = parseFloat(row[17]);
+                            const lat = parseFloat(row[17]);
+                            const lng = parseFloat(row[18]);
                             
                             if (!isNaN(lat) && !isNaN(lng)) {
                                 displayStores.push({
                                     status: status,
                                     owner: owner,
-                                    retailer: row[8]?.toString().trim() || '',
-                                    storeNumber: row[10]?.toString().trim() || '',
-                                    storeName: row[11]?.toString().trim() || '',
-                                    address: row[12]?.toString().trim() || '',
-                                    city: row[13]?.toString().trim() || '',
-                                    state: row[14]?.toString().trim() || '',
-                                    zip: row[18]?.toString().trim() || '',
+                                    retailer: row[9]?.toString().trim() || '',
+                                    storeNumber: row[11]?.toString().trim() || '',
+                                    storeName: row[12]?.toString().trim() || '',
+                                    address: row[13]?.toString().trim() || '',
+                                    city: row[14]?.toString().trim() || '',
+                                    state: row[15]?.toString().trim() || '',
+                                    zip: row[19]?.toString().trim() || '',
                                     latitude: lat,
                                     longitude: lng
                                 });
